@@ -6,11 +6,18 @@ var present = document.querySelector(".present");
 var future = document.querySelector(".future");
 var saveBtn = document.querySelector(".saveBtn");
 
-$('.saveBtn').on("click", function ())
+$(function () {
+  var currentDate = dayjs().format("dddd, MMMM, D, YYYY");
+  $("#currentDay").text(currentDay);
+}
+
+$('.saveBtn').on("click", function (
+  localStorage.setItem('key', this.)
+))
 
 $(function () {
   $(document).ready(function () {
-    var currentDay = time().format("dddd, MMMM, YYYY");
+    var currentDate = dayjs().format("dddd, MMMM, D, YYYY");
     $("#currentDay").text(currentDay);
   
 
