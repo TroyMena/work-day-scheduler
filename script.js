@@ -7,39 +7,38 @@
 //var future = document.querySelector(".future");
 //var saveBtn = document.querySelector(".saveBtn");
 
-$(function () {
-  
-});
-
 //$('.saveBtn').on("click", function (
 //  localStorage.setItem('key', this.)
 //))
 
 $(document).ready(function () {
   var currentDate = dayjs().format("dddd, MMMM, D, YYYY");
-  $("#currentDay").text(currentDay);
+  $("#currentDay").text(currentDate);
   
+  var workHours = ["hour-9", "hour-10", "hour-11", "hour-12", "hour-13", "hour-14", "hour-15", "hour-16", "hour-17"]
 
-  var currentHour = time().hours();
-  for (var i = 9; i < 17; i++) {
-    var colorKey = "";
+  var currentHour = dayjs().hour();
+  for (var i = 9; i <= 17; i++) {
+    var targetElement = $("#" + workHours[i - 9]);
     if (i < currentHour) {
-      colorKey = past;
+      targetElement.addClass("past");
     } else if (i === currentHour) {
-      colorKey = present;
+      targetElement.addClass("present");
     } else {
-      colorKey = future;
+      targetElement.addClass("future");
     }
   }
 
-
-  saveBtn.addEventListener("click", function saveLocalStorage() {
-    console.log("test")
-    //save
+  $(".saveBtn").on("click", function() {
+    var timeBlock = $(this).parent().attr("id");
+    var userText = $(this).siblings(".description").val();
+    localStorage.setItem(timeBlock, userText);
   })
+
 
   var currentDateTime = dayjs().format("dddd, MMMM, D, YYYY");
   $("#currentDay").text(currentDateTime);
+  localStorage.setItem(timeBlock, userText);
 })
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
