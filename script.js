@@ -1,24 +1,23 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var past = document.querySelector(".past");
-var present = document.querySelector(".present");
-var future = document.querySelector(".future");
-var saveBtn = document.querySelector(".saveBtn");
+// These variables will be grabbed inside the function.
+//var past = document.querySelector(".past");
+//var present = document.querySelector(".present");
+//var future = document.querySelector(".future");
+//var saveBtn = document.querySelector(".saveBtn");
 
 $(function () {
+  
+});
+
+//$('.saveBtn').on("click", function (
+//  localStorage.setItem('key', this.)
+//))
+
+$(document).ready(function () {
   var currentDate = dayjs().format("dddd, MMMM, D, YYYY");
   $("#currentDay").text(currentDay);
-}
-
-$('.saveBtn').on("click", function (
-  localStorage.setItem('key', this.)
-))
-
-$(function () {
-  $(document).ready(function () {
-    var currentDate = dayjs().format("dddd, MMMM, D, YYYY");
-    $("#currentDay").text(currentDay);
   
 
   var currentHour = time().hours();
@@ -31,13 +30,17 @@ $(function () {
     } else {
       colorKey = future;
     }
-  }}
-  )
+  }
+
 
   saveBtn.addEventListener("click", function saveLocalStorage() {
     console.log("test")
     //save
   })
+
+  var currentDateTime = dayjs().format("dddd, MMMM, D, YYYY");
+  $("#currentDay").text(currentDateTime);
+})
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -56,4 +59,4 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
+
